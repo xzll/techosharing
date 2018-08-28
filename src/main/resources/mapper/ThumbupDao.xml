@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ThumbupDao">	
+	<resultMap type="Thumbup" id="ThumbupResultMap">
+		<result column="thumbup_uid" property="uid" />
+		<result column="thumbup_tid" property="tid" />
+		<result column="thumbup_createtime" property="createtime" />
+		<result column="thumbup_read" property="read" />
+		<result column="thumbup_username" property="username"/>
+		<association property="techo" javaType="Techo" >
+			<id column="techo_id" property="id" />
+			<result column="techo_uid" property="uid"/>
+			<result column="techo_username" property="username"/>
+			<result column="techo_title" property="title"/>
+			<result column="techo_content" property="content"/>
+			<result column="techo_createtime" property="createtime"/>
+			<result column="techo_imgnames" property="imgnames"/>
+		</association>
+	</resultMap>
+	<insert id="insert" >
+		insert into thumbup(uid,tid)
+		values( #{uid},#{tid})
+	</insert>
+ 	<select id="countByTid" resultType="java.lang.Long">
+		select count(*) from thumbup where tid = #{_parameter}
+		
+	</select>
+	<select id="selectBeThumbupByPage" resultMap="ThumbupResultMap"> <!-- 谁赞了我 -->
+		select 
+		tp.uid thumbup_uid,
+		tp.tid thumbup_tid,
+		DATE_FORMAT(tp.createtime,'%Y-%m-%d %H:%i:%s') thumbup_createtime,
+		tp.read thumbup_read,
+		u.username thumbup_username,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u2.username techo_username
+		from thumbup tp,techo t, user u,user u2
+		where t.uid = #{uid} and t.id=tp.tid and tp.uid = u.id and u2.id = t.uid 
+		<!-- <if test="del!=null and del!=''"> -->
+			and del = 0
+		<!-- </if> -->
+		<if test="techo!=null and techo.content!=null and techo.content!=''">
+			and t.content = #{techo.content}
+		</if>
+		order by tp.createtime desc
+	</select>
+		<select id="selectMyThumbupByPage" resultMap="ThumbupResultMap"> <!-- 我赞了谁 -->
+		select 
+		tp.uid thumbup_uid,
+		tp.tid thumbup_tid,
+		DATE_FORMAT(tp.createtime,'%Y-%m-%d %H:%i:%s') thumbup_createtime,
+		tp.read thumbup_read,
+		u.username thumbup_username,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u2.username techo_username
+		from thumbup tp,techo t, user u,user u2
+		where tp.uid = #{uid} and t.id=tp.tid and tp.uid = u.id and u2.id = t.uid 
+		<if test="techo!=null and techo.content!=null and techo.content!=''">
+			and t.content = #{techo.content}
+		</if>
+		order by tp.createtime desc
+	</select>
+	<update id="deleteNotice"><!-- 删除通知 -->
+		update thumbup set del = 1 where uid=#{uid} and tid=#{tid}
+	</update>
+	<delete id="delete"><!-- 取消赞 -->
+		delete from thumbup where uid=#{uid} and tid=#{tid}
+	</delete>
+	<delete id="deleteAll">
+		delete from thumbup 
+		<where>
+			<if test="uid!=null and uid!=''">
+				or uid = #{uid}
+			</if>
+			<if test="tid!=null and tid!=''">
+				or tid = #{tid}
+			</if>
+		</where>
+	</delete>
+</mapper>

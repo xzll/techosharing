@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!--引入properties文件，这些properties中就是key-value的键值对，使用的时候可以使用${xxx} 获取。 -->
+	<!-- <context:property-placeholder location="classpath:properties/*.properties"/>
+	 --><!-- 引入其他spring配置文件　 -->
+	<!-- <import resource="applicationContext-*.xml"/> 
+	-->
+<!-- 	<mvc:annotation-driven />
+	<context:component-scan base-package="techosharing" /> 
+	<context:annotation-config />
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+ -->
+
+ 	<context:property-placeholder location="classpath:properties/*.properties" ignore-unresolvable="true"/>
+	
+	<import resource="applicationContext-*.xml"/>
+	
+ </beans>

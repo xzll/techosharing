@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.CommentDao" >
+	<resultMap type="Comment" id="CommentResultMap">
+		<id column="comment_id" property="id" />
+		<result column="comment_tid" property="tid" />
+		<result column="comment_content" property="content" />
+		<result column="comment_uid" property="uid" />
+		<result column="comment_createtime" property="createtime" />
+		<result column="comment_username" property="username" />
+		<result column="comment_read" property="read" />
+		<association property="techo" javaType="Techo" >
+			<id column="techo_id" property="id" />
+			<result column="techo_uid" property="uid"/>
+			<result column="techo_username" property="username"/>
+			<result column="techo_content" property="content"/>
+			<result column="techo_title" property="title"/>
+			<result column="techo_createtime" property="createtime"/>
+			<result column="techo_imgnames" property="imgnames"/>
+		</association>
+	</resultMap>
+	<insert id="insert" keyProperty="id">  
+		insert into comment(tid,uid,content) 
+		 values(#{tid},#{uid},#{content})
+	</insert>
+	
+	<select id="selectById" resultType="Comment">
+		select * from comment where id=#{_parameter}
+	</select>
+	
+	
+	<select id="countByTid" resultType="java.lang.Long">
+		select count(*) from comment where tid = #{_parameter}
+		
+	</select>
+	<select id="selectUserCommentsByPage" resultMap="CommentResultMap"><!-- 用户自己的评论 -->
+		select c.id comment_id,
+		c.tid comment_tid,
+		c.uid comment_uid,
+		c.content comment_content,
+		DATE_FORMAT(c.createtime,'%Y-%m-%d %H:%i:%s') comment_createtime,
+		c.read comment_read,
+		u.username comment_username,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u2.username techo_username
+		
+		from comment c,user u,techo t,user u2
+		 <!-- 用户的所有评论 -->
+				where c.uid=#{uid} and c.tid=t.id and c.uid = u.id and t.uid = u2.id
+			
+			<if test="uid!=null and uid!='' and 
+			content!=null and content!=''"><!-- 用户的所有评论中搜索 -->
+				and c.content like '%'#{content}'%'
+			</if>
+		
+		order by c.createtime desc
+	</select>
+	<select id="selectUserReceiveCommentsByPage" resultMap="CommentResultMap"><!-- 用户收到的评论  -->
+		select c.id comment_id,
+		c.tid comment_tid,
+		c.uid comment_uid,
+		c.content comment_content,
+		DATE_FORMAT(c.createtime,'%Y-%m-%d %H:%i:%s') comment_createtime,
+		c.read comment_read,
+		u.username comment_username,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u2.username techo_username
+		
+		from comment c,user u,techo t,user u2
+		
+			 <!-- 用户的手帐下的评论 -->
+				where t.uid=#{uid} and c.tid=t.id and c.uid = u.id and t.uid = u2.id 
+				and del=0 
+			
+			<if test="uid!=null and uid!='' and 
+			content!=null and content!=''"><!-- 评论中搜索 -->
+				and c.content like '%'#{content}'%'
+			</if>
+		
+		order by c.createtime desc
+	</select>
+	<select id="selectCommentsByPage" resultMap="CommentResultMap"><!-- 用户自己的评论 -->
+		select c.id comment_id,
+		c.tid comment_tid,
+		c.uid comment_uid,
+		c.content comment_content,
+		DATE_FORMAT(c.createtime,'%Y-%m-%d %H:%i:%s') comment_createtime,
+		c.read comment_read,
+		u.username comment_username,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u2.username techo_username
+		
+		from comment c,user u,techo t,user u2
+		 <!-- 用户的所有评论 -->
+				where   c.tid=t.id and c.uid = u.id and t.uid = u2.id
+			
+			<if test=" 
+			content!=null and content!=''"><!-- 用户的所有评论中搜索 -->
+				and c.content like '%'#{content}'%'
+			</if>
+		
+		order by c.createtime desc
+	</select>
+	<select id="selectTechoCommentByPage" resultType="Comment">
+		select c.id,c.tid,c.uid,c.content,
+		DATE_FORMAT(c.createtime,'%Y-%m-%d %H:%i:%s') createtime,
+		c.read,u.username 
+		from comment c,user u,techo t
+		
+			 <!-- 手帐评论列表 -->
+				where c.tid=#{tid} and u.id=c.uid and t.id=c.tid
+			
+			<if test="content!=null and content!=''">
+				and content like '%'#{content}'%'
+			</if>
+		
+		order by createtime desc
+	</select>
+	<update id="deleteReceive">
+		update comment set del = 1 where id=#{_parameter}
+	</update>
+	<delete id="delete">
+		delete from comment where id=#{_parameter}
+	</delete>
+	<delete id="deleteAll">
+		delete from comment 
+		<where>
+			<if test="uid!=null and uid!=''">
+				or uid = #{uid}
+			</if>
+			<if test="tid!=null and tid!=''">
+				or tid = #{tid}
+			</if>
+		</where>
+	</delete>
+
+</mapper>

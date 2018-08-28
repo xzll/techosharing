@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>手账分享社区</title>
+  <link rel="stylesheet" type="text/css" href="${basePath}../css/commen.css"/>
+  <link rel="stylesheet" type="text/css" href="${basePath}../css/index.css"/>
+
+</head>
+<body>
+  <!-- 登录注册 -->
+  <div class="lo"  id="lo" style="display:none">
+  <!-- 登录 -->
+  <div class="formContainer rlt" id="loginBox" style="display:none">
+      <span class="login rlt" id="login">登录</span>
+      <span class="cut rlt" >/</span>
+      <span class="register rlt" id="register">注册</span><br>
+      <span class="tips rlt">请输入邮箱密码</span>
+      <form action="" class="rlt" method="post">
+        <div class="settled">
+        <input type="text" id="user" class="rlt" placeholder="邮箱" name="userName" autocomplete="off">
+        <input type="password" id="password" class="rlt" placeholder="密码" name="password">
+        <div class="row rlt" autocomplete="off">
+          <input type="checkbox" id="checkbox">
+          <span class="remember rlt">记住账号</span>
+          <a href="" class="forget">忘记密码</a>
+        </div>
+        <input type="submit" id="loginBtn" class="rlt" value="登录">
+        </div>
+      </form>
+      <!-- 注册 -->
+    </div>
+      <div class="formContainer rlt" id="registerBox"  style="display:none">
+      <span class="login rlt" id="login2">登录</span>
+      <span class="cut rlt" >/</span>
+      <span class="register rlt" id="register2">注册</span><br>
+      <span class="tips rlt">请输入邮箱密码</span>
+      <form action="" class="rlt" method="post">
+        <div class="settled">
+        <input type="text" id="user" class="rlt" placeholder="邮箱" name="userName" autocomplete="off">
+        <div class="getCode rlt">发送验证码</div>
+        <input type="password" id="password" class="rlt" placeholder="密码" name="password">
+        <input type="code" id="code" class="rlt" placeholder="验证码" name="password">
+        
+        <input type="submit" id="registerBtn" class="rlt" value="注册">
+        </div>
+      </form>
+    </div>
+    </div>
+  <!-- 导航栏 -->
+  <div class="ma">
+  <header>
+    <!-- 导航栏左边 -->
+    <div class="he_left">
+      <div class="logo"></div>
+      <div class="search_box">
+        <input type="text" class="search" id="search"/ placeholder="搜索">
+        <div class="search_btn">
+          <img class="search_btn_image" src="../images/searchBtn.png" width="25" height="30" />
+        </div>
+      </div>
+    </div>
+    <!-- 导航栏右边 -->
+    <div class="he_right">
+      <div class="homepage" id="homepage">主页</div>
+      <div class="go_login" id="goLogin">
+        登录
+      </div>
+      <div class="go_register" id="goRegister">
+        注册
+      </div>
+    </div>
+  </header>
+  <!-- 正文 -->
+  <main>
+    <!-- 正文主要内容 -->
+    <div class="m_main">
+      <div class="main_content">
+        <section class="fi">
+          <div class="info">
+            <div class="in_head">
+              <img class="in_head_image" src="../images/us_head.jpg" width="50" height="50" />
+            </div>
+            <div class="in_text">
+              <div class="in_name">手账小达人</div>
+              <div class="in_data">2018.02.03</div>
+            </div>
+          </div>
+          <div class="co_article">
+            <div class="co_art_text">
+              <div class="co_art_title">晒一晒自己的手账拼贴</div>
+              <div class="co_art_content">17年的本子，话唠的我在用后面的点阵页做测试~
+练一练字体大小，省的明年面对A6小可爱无从下笔~
+手账小白不敢一下子就入A5的本子，那么大怕用不来~
+话说为啥没有A5.5呢，太好奇了，就没有人主动开发一个尺寸适中的手帐本吗</div>
+            </div>
+            <div class="co_art_img">
+              <img  src="../images/shouzhang.jpg" width="100" height="100" />
+            </div>
+          </div>
+          <div class="co_handle">
+            <hr/>
+            <div class="comment">评论12&nbsp&nbsp </div>
+            <div class="collect">收藏20&nbsp&nbsp </div>
+            <div class="like">赞203 &nbsp&nbsp</div>
+            <div class="material">素材获取&nbsp&nbsp </div>
+          </div>
+        </section >
+        <section class="se">
+          <div class="info">
+            <div class="in_head">
+              <img class="in_head_image" src="../images/us_head.jpg" width="50" height="50" />
+            </div>
+            <div class="in_text">
+              <div class="in_name">手账小达人</div>
+              <div class="in_data">2018.02.03</div>
+            </div>
+          </div>
+          <div class="co_article">
+            <div class="co_art_text">
+              <div class="co_art_title">晒一晒自己的手账拼贴</div>
+              <div class="co_art_content">17年的本子，话唠的我在用后面的点阵页做测试~
+练一练字体大小，省的明年面对A6小可爱无从下笔~
+手账小白不敢一下子就入A5的本子，那么大怕用不来~
+话说为啥没有A5.5呢，太好奇了，就没有人主动开发一个尺寸适中的手帐本吗</div>
+            </div>
+            <div class="co_art_img">
+              <img  src="../images/shouzhang.jpg" width="100" height="100" />
+            </div>
+          </div>
+          <div class="co_handle">
+            <hr/>
+            <div class="comment">评论12&nbsp&nbsp </div>
+            <div class="collect">收藏20&nbsp&nbsp </div>
+            <div class="like">赞203 &nbsp&nbsp</div>
+            <div class="material">素材获取&nbsp&nbsp </div>
+          </div>
+        </section >
+        <section class="se">
+          <div class="info">
+            <div class="in_head">
+              <img class="in_head_image" src="../images/us_head.jpg" width="50" height="50" />
+            </div>
+            <div class="in_text">
+              <div class="in_name">手账小达人</div>
+              <div class="in_data">2018.02.03</div>
+            </div>
+          </div>
+          <div class="co_article">
+            <div class="co_art_text">
+              <div class="co_art_title">晒一晒自己的手账拼贴</div>
+              <div class="co_art_content">17年的本子，话唠的我在用后面的点阵页做测试~
+练一练字体大小，省的明年面对A6小可爱无从下笔~
+手账小白不敢一下子就入A5的本子，那么大怕用不来~
+话说为啥没有A5.5呢，太好奇了，就没有人主动开发一个尺寸适中的手帐本吗</div>
+            </div>
+            <div class="co_art_img">
+              <img  src="../images/shouzhang.jpg" width="100" height="100" />
+            </div>
+          </div>
+          <div class="co_handle">
+            <hr/>
+            <div class="comment">评论12&nbsp&nbsp </div>
+            <div class="collect">收藏20&nbsp&nbsp </div>
+            <div class="like">赞203 &nbsp&nbsp</div>
+            <div class="material">素材获取&nbsp&nbsp </div>
+          </div>
+        </section >
+
+
+      </div>
+    </div>
+  </main>
+</div>
+  <script src="${basePath}../js/jquery.min.js"></script>
+  <script src="${basePath}../js/login.js"></script>
+  <script src="${basePath}../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.FanDao" >
+	<insert id="insert" >  
+		insert into fan(uid,fanid) 
+		 values(#{uid},#{fanid})
+	</insert>
+	
+	<select id="selectByUid" resultType="Fan">
+		select uid,fanid,
+		DATE_FORMAT(createtime,'%Y-%m-%d %H:%i:%s') createtime
+		from fan where uid=#{_parameter}
+	</select>
+	
+	<select id="selectByFanid" resultType="Fan">
+		select uid,fanid,
+		DATE_FORMAT(createtime,'%Y-%m-%d %H:%i:%s') createtime
+		from fan where fanid=#{_parameter}
+	</select>
+	
+	<select id="selectByUidByPage" resultType="Fan"> <!-- 查找粉丝 -->
+		select f.uid,f.fanid,
+		DATE_FORMAT(f.createtime,'%Y-%m-%d %H:%i:%s') createtime,
+		f.read,u.username,u.headimgname
+		from fan f,user u
+		where f.uid=#{uid} and f.fanid=u.id 
+		<if test="username!=null and username!=''">
+			and u.username like '%'#{username}'%'
+		</if>
+		order by f.createtime desc
+	</select>
+	
+	<select id="selectByFanidByPage" resultType="Fan"><!-- 查找关注的人 -->
+		select f.uid,f.fanid,
+		DATE_FORMAT(f.createtime,'%Y-%m-%d %H:%i:%s') createtime,
+		f.read,u.username,u.headimgname
+		from fan f,user u
+		where f.fanid=#{fanid} and f.uid=u.id 
+		<if test="username!=null and username!=''">
+			and u.username like '%'#{username}'%'
+		</if>
+		order by f.createtime desc
+	</select>
+	
+	<select id="selectNoticeByPage" resultType="Fan"> <!-- 通知：粉丝 -->
+		select f.uid,f.fanid,
+		DATE_FORMAT(f.createtime,'%Y-%m-%d %H:%i:%s') createtime,
+		f.read,u.username,u.headimgname
+		from fan f,user u
+		where f.uid=#{uid} and f.fanid=u.id and f.del=0
+		<if test="username!=null and username!=''">
+			and u.username like '%'#{username}'%'
+		</if>
+		order by f.createtime desc
+	</select>
+	<update id="deleteNotice"><!-- 删除通知 -->
+		update fan set del = 1 where uid=#{uid} and fanid=#{fanid}
+	</update>
+	<delete id="delete"><!-- 取消关注 -->
+		delete from fan where uid=#{uid} and fanid=#{fanid}
+	</delete>
+	<delete id="deleteAll">
+		delete from fan 
+		<where>
+			<if test="uid!=null and uid!=''">
+				or uid = #{uid}
+			</if>
+			<if test="fanid!=null and fanid!=''">
+				or fanid = #{fanid}
+			</if>
+		</where>
+	</delete>
+
+</mapper>

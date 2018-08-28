@@ -1,0 +1,162 @@
+.m_main{
+  width: 100%;
+  height: 600px;
+  margin: 0;
+}
+.m_main div{
+  float: none;
+}
+.journalA{
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px auto;
+  width: 800px;
+}
+.joTitle{
+  font-size: 2em;
+  margin: 0 0 20px 0;
+}
+.joAuthor{
+  color: #404240;
+  margin: 5px;
+}
+.joTime{
+  color: #404240;
+  margin: 5px;
+
+}
+.joContent{
+  color: #404240;
+  margin: 5px;
+  font-size: 1.2em;
+}
+
+.joHandle{
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.3em;
+  color: #3c3939;
+}
+.joHandle hr{
+  margin: 10px 0 10px 0;
+}
+.joHandle div{
+  float: left;
+  cursor: pointer;
+}
+.addComment{
+  clear: left;
+}
+.addComment textarea{
+  width: 80%;
+  height: 100px;
+  vertical-align: top;
+  color: #5a5758;
+  font-size: 1.3em;
+  padding: 10px;
+}
+.addC{
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px 40px;
+  text-align: center;
+  font-size: 1.6em;
+  background: #5aafe4;
+  border-radius: 10px;
+}
+.joComment{
+  clear: left;
+}
+.joInfo
+{
+  margin: 10px 0;
+}
+.joIn_head_image{
+  float: left;
+}
+.joIin_text{
+  float: left;
+  font-size: 1.2em;
+  padding: 5px;
+}
+.joCommentCo{
+  clear: left;
+  font-size: 1.3em;
+}
+.joComment hr{
+  margin: 10px 0;
+}
+
+
+/* 素材 */
+.joCommentBox{
+  width: 700px;
+  height: 450px;
+}
+.joCommentBox hr{
+  clear: left;
+  margin: 10px 0
+}
+.joMeTitle{
+  padding: 10px;
+  font-size: 1.3em;
+}
+.joMaterial{
+  width: 700px;
+  height: 40px;
+  font-size: 1.3em;
+  line-height: 40px;
+}
+.joMaterial div{
+  float: left;
+  text-align: center;
+}
+.meImg{
+  margin: 0 20px 0 0;
+}
+.meName{
+  width: 100px;
+  height: 40px;
+
+}
+.meStock{
+  width: 100px;
+  height: 40px;
+  
+}
+.mePrice{
+  width: 100px;
+  height: 40px;
+  
+}
+.meNum{
+  width: 100px;
+  height: 40px;
+  font-size: 1.4em;  
+}
+.meMin,.meAdd{
+  width: 20px;
+  height: 20px;
+  margin: 10px 0;
+  line-height: 20px;
+}
+.meNum input{
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 10px;
+}
+.buyBtn{
+  width: 50px;
+  height: 40px;
+  border-radius: 5px;
+  background: #91d0f7;
+  cursor: pointer;
+}
+.buyBtn:hover{
+  background: #4eace6;
+}
+.pageBox div{
+	float:left;
+}

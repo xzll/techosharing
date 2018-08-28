@@ -1,0 +1,148 @@
+/* 瀵艰埅鏍� */
+.message{
+  width: 100px;
+  height: 40px;
+}
+.user{
+  height: 40px;
+}
+.us_head{
+  border-radius: 20px;
+}
+.us_name, .me_name{
+  margin: 0 10px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+}
+.me_head{
+  padding: 7px 0;
+}
+
+/* 娑堟伅寮瑰嚭妗� */
+.me_popup li:hover{
+  background: #d2ecfb ;
+}
+
+
+/* 鐢ㄦ埛寮瑰嚭妗� */
+.us_popup{
+  width: 220px;
+  height: 220px;
+  top: 40px;
+  right: 50px;
+  position: fixed;
+  z-index: 5;
+  background: #d7eaf9;
+  border-radius: 5px; 
+}
+.sign_box{
+  height: 50px;
+  line-height: 50px;
+  font-size: 1em;
+  background: #a5d8f7 ;
+  padding: 0 10px 0 10px;
+  color: #111111 ;
+  border-radius: 5px; 
+}
+.coinN{
+  float:right;
+}
+.sign_btn{
+  font-size: 1.3em;
+  cursor:pointer;
+  padding: 5px;
+}
+.sign_btn:hover{
+  background: #82c7f1;
+  border-radius: 5px; 
+}
+.us_popup_btn{
+  width: 110px;
+  padding: 5px 0;
+  float: left;
+  color: #94cbec ;
+  cursor:pointer;
+}
+.us_popup_btn img{
+  margin: 0 auto;
+  display: block;
+}
+.us_popup_font{
+  width: 110px;
+  text-align: center;
+  font-size: 1.4em;
+}
+.us_popup_btn:hover{
+  background: #b9def5 ;
+}
+.me_popup{
+  width: 100px;
+  height: 183px;
+  top: 40px;
+  right: 5px;
+  z-index: 5;
+  background: #fafdff;
+  box-shadow: -1px 0px 5px #d8e4ec;
+  position: fixed;
+}
+.me_popup li{
+  padding: 5px;
+  cursor:pointer;
+}
+.at_me_m div{
+  font-size: 0.7em;
+  height: 30px;
+}
+
+.active{
+  margin: 0 70px 0 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+.passive{
+  margin: 0 70px 0 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.upper{
+  color: red;
+}
+.co_article_m{
+  height: 132px;
+  margin: 0 50px;
+  padding: 10px;
+  background: #c5e1f3;
+  border-radius: 10px;
+}
+/* 绮変笣 */
+.in_text{
+  top: -55px;
+  left: 50px;
+}
+.info div{
+  float: none;
+}
+
+/* 椤电爜 */
+.pageBox{
+  width: 150px;
+  height: 20px;
+  float: none;
+  font-size: 1.3em;
+  margin: 0 auto;
+}
+.pageBox div{
+  width:30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  float: left;
+  cursor: pointer;
+}
+.page_select{
+  background: #deff34;
+  border-radius: 15px;
+}

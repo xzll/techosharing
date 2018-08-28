@@ -1,0 +1,394 @@
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0} 
+body{font:12px"Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;} 
+a{color:#2d374b;text-decoration:none} 
+a:hover{color:#cd0200;text-decoration:underline} 
+em{font-style:normal} 
+li{list-style:none} 
+img{border:0;vertical-align:middle} 
+table{border-collapse:collapse;border-spacing:0} 
+p{word-wrap:break-word}
+*{
+  margin: 0;
+  padding: 0;
+}
+.rlt{
+  position: relative;
+}
+body{
+  background: #5eafe1;
+}
+header{
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  top: 0px;
+  background:#fafdff; 
+  
+}
+.he_left div,.he_right div{
+  display: inline-block;
+  vertical-align: top;
+  cursor:pointer;
+}
+.he_left div:hover,.he_right div:hover{
+  color: #76c3f3;
+}
+.logo{
+  width: 120px;
+  height: 40px;
+  background: url(../images/loge.png);
+}
+.search_box{
+  width: 290px;
+  height: 35px;
+  margin: 2px 0;
+  border-radius: 10px;
+  background: #d7eaf9;
+}
+.search_box input{
+  width: 220px;
+  height: 30px;
+  border-radius: 10px 0 0 10px;
+  margin: 2px 5px;
+  padding: 0px 10px;
+  border: none;
+  outline: none;
+  background: #d7eaf9;
+  font-size: 1.3em;
+  color: #9a9898;
+  border-right: 1px solid #9a9898;
+}
+.search_btn{
+  width: 30px;
+  height: 40px;
+}
+.search_btn_image{
+  padding: 5px 0;
+}
+.he_left{
+  float:left;
+}
+.he_right{
+  float:right;
+  padding: 0 10px;
+}
+.he_right div{
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+}
+/* .message{
+  width: 90px;
+  height: 40px;
+}
+.user{
+  width:110px;
+  height: 40px;
+} */
+.homepage{
+  width: 75px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+}
+.us_head{
+  border-radius: 20px;
+}
+.us_name, .me_name{
+  margin: 0 10px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+}
+.me_head{
+  padding: 7px 0;
+}
+
+.go_register{
+  margin: 0 0 0 20px;
+}
+
+/* 正文 */
+main{
+  width: 100%;
+  height: 600px;
+  margin: 30px auto;
+}
+main div{
+  float: left;
+}
+.m_left{
+  width: 200px;
+  height: 600px;
+  margin: 0 0 0 200px;
+  position: fixed;
+  top: 40px;
+  background: #93cef2;
+  color: #ffffff;
+}
+.m_left div{
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+  float: none;
+}
+.m_left div:hover{
+  background: #76c3f3;
+}
+.m_left_select{
+  background: #76c3f3;
+}
+
+.m_main{
+  width: 60%;
+  height: 600px;
+  margin: 10px 0 0 400px;
+}
+.main_tit{
+  width: 100%;
+  height: 40px;
+  padding: 0 0 0 20px;
+  position: fixed;
+  line-height: 40px;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  color:#636161;
+  background:#ffffff;
+  box-shadow: 1px 1px 5px #888888;
+
+}
+
+.main_content{
+  width: 100%;
+  margin: 40px 0 0 0;
+}
+.main_content section{
+  width: 95%;
+  height: 200px;
+  min-width: 680px; 
+  border-radius: 5px;
+  margin: 20px;
+  padding: 15px;
+  background: #ffffff;
+  color: #111111;
+}
+.info{
+  width: 200px;
+  height: 50px;
+  float: none;
+}
+.in_head_image{
+  border-radius: 25px;
+  cursor: pointer;
+}
+.in_text{
+  margin: 10px 0 0 10px;
+}
+.in_text div{
+  float: none;
+}
+.in_name{
+  font-size: 1.3em;
+  font-weight: 600;
+  cursor: pointer;
+}
+.in_data{
+  color: #656262;
+  margin: 5px 0 0 0;
+}
+.co_article{
+  float: none;
+}
+.co_art_text{
+  width: 78%;
+}
+.co_art_title{
+  font-size: 1.5em;
+  font-weight: 1000;
+  cursor: pointer;
+}
+.co_art_img img{ 
+  border-radius: 5px;
+}
+.co_art_content{
+  width: 90%;
+  font-size: 1.2em;
+  line-height: 1.7;
+}
+.co_handle{
+  color: #3c3939;
+  width: 100%;
+  font-size: 1.3em;
+  letter-spacing: 15px;
+}
+.co_handle hr{
+  margin: 10px 0 10px 0;
+}
+.co_handle div{
+  cursor: pointer;
+}
+
+/* 消息弹出框 */
+.me_popup li:hover{
+  background: #d2ecfb ;
+}
+
+
+/* 用户弹出框 */
+.sign_box{
+  background: #5eb0e1 ;/* 0.5 */
+  color: #111111 ;
+}
+
+.us_popup_btn{
+  color: #acd6f0 ;
+}
+.us_popup_btn :hover{
+  background: #b9def5 ;
+}
+
+
+.ma{
+  position: relative;
+  z-index: -1;
+}
+.lo{
+  width: 100%;
+  height: 700px;
+  background: rgba(66,66,66,0.7);
+  position: fixed;
+  top: 0;
+  z-index: 0;
+}
+.formContainer{
+  left: 40%;
+  top: 17%;
+  height: 450px;
+  width: 355px;
+  padding-left: 50px;
+  border-radius: 10px;
+  background-color: #5eafe1de;
+  position: fixed;
+  z-index: 1;
+}
+.login{
+  top: 25px;
+  font-size: 1.5em;
+  color: rgba(51,51,51,1);
+  cursor: pointer;
+}
+.cut{
+  top: 27px;
+  font-size: 2em;
+  margin: 10px;
+  color: rgba(51,51,51,1);
+}
+.register{
+  top: 25px;
+  font-size: 1.5em;
+  color: rgba(51,51,51,1);
+  cursor: pointer;
+}
+
+.tips {
+  top: 40px;
+  font-size: 1.5em;
+  color: #f00;
+}
+
+form{
+  top: 50px;
+}
+
+[type="text"]{
+    top: 15px;
+    width: 250px;
+    height: 40px;
+    padding-left: 20px;
+    background: rgba(1,1,1,0);
+    border: solid 2px #858b98;
+}
+
+[type="password"]{
+  margin-top: 30px;
+  width: 250px;
+  height: 40px;
+  padding-left: 20px;
+  background: rgba(1,1,1,0);
+  border: solid 2px #858b98;
+}
+
+.row{
+  top: 30px;
+}
+
+[type="checkbox"]{
+  height: 25px;
+  width: 25px;
+  border: 1px solid #000;
+}
+
+.remember{
+  top: -8px;
+  padding-left: 20px;
+  font-size: 1.3em;
+}
+
+.forget{
+  float: right;
+  padding-right: 100px;
+  font-size: 1.3em;
+}
+
+.forget:link,
+.forget:visited{
+  color: rgba(0,51,255,1);
+  text-decoration: none;
+}
+
+[type="submit"]{
+  top: 60px;
+  width: 300px;
+  height: 50px;
+  background-color: rgba(50,177,108,1);
+  color: white;
+  font-size: 2em;
+  border-radius: 10px;
+  border: transparent;
+  font-family: Microsoft Yahei;
+  cursor: pointer;
+}
+
+[type="submit"]:hover{
+  background-color: rgba(0,113,48,1);
+}
+
+[type="submit"]:active{
+  color: rgba(102,102,102,1);
+  background-color: #fff;
+}
+
+[type="code"]{
+  margin-top: 20px;
+  width: 250px;
+  height: 40px;
+  padding-left: 20px;
+  background: rgba(1,1,1,0);
+  border: solid 2px #858b98;
+}
+.getCode{
+  width: 65px;
+  height: 30px;
+  padding: 0 0 0 5px;
+  line-height: 30px;
+  background: #2094dc;
+  border-radius: 10px;
+  top: 15px;
+  display: inline-block;
+  cursor: pointer;
+}

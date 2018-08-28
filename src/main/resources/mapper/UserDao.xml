@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.UserDao">
+	<select id="select" resultType="User">
+		select id,username,email from user t
+		<where>
+			<if test="username != null and username !=''">
+				and t.username = #{username}
+			</if>
+			<if test="password != null and password !=''">
+				and t.password = #{password}
+			</if>
+			<if test="email != null and email !=''">
+				and t.email = #{email}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insert" keyProperty="id">
+		insert into user(username,`password`,email)
+		values( #{username},#{password},#{email})
+		<!-- select #{username},#{password},#{email} from dual
+		 where not exists(select 1 from user where username=#{username} or email=#{email}) -->
+	</insert>
+	<insert id="insertUser" keyProperty="id">
+		insert into user(username,`password`,email,coin)
+		
+		 select #{username},#{password},#{email},#{coin} from dual
+		 where not exists(select 1 from user where username=#{username} or email=#{email}) 
+	</insert>
+ 	
+	<select id="selectById" resultType="User">
+		select * from user where id = #{_parameter}
+	</select>
+	
+	<select id="selectByPage" resultType="User">
+		select * from user 
+		<where>
+			<if test="username != null and username!=''">
+				and username like '%'#{username}'%'
+			</if>
+		</where>
+	</select>
+
+	<update id="coinAddAndSub">
+		update user
+		set coin=coin+#{coin}
+		where id=#{id} and coin+#{coin} &gt;=0 <!-- &gt;即>	 -->
+	</update>
+	<update id="update">
+		update user
+		<set>
+			<if test="password!=null and password!=''">
+				 password=#{password},
+			</if>
+			<if test="username!=null and username!=''">
+				 username=#{username},
+			</if>
+			<if test="coin!=null and coin!=''">
+				 coin=#{coin},
+			</if> 
+			<if test="signin!=null and signin!=''">
+				 signin=#{signin},
+			</if> 
+			
+		</set>
+		where id=#{id} 
+		<if test="coin!=null and coin!=''">
+			and #{coin}&gt;=0
+		</if> 
+		<if test="signin!=null and signin!=''">
+			and #{signin}&gt;=0
+		</if> 
+	</update>
+	<update id="updateInfo">
+		update user
+		<set>
+			<if test="password!=null and password!=''">
+				password=#{password},
+			</if>
+			<if test="username!=null and username!=''">
+				 username=#{username},
+			</if>
+			<if test="city!=null and city!=''">
+				 city=#{city},
+			</if> 
+			<if test="content!=null and content!=''">
+				 content=#{content},
+			</if> 
+			<if test="sex!=null and sex!=''">
+				 sex=#{sex},
+			</if>
+			<if test="headimgname!=null and headimgname!=''">
+				 headimgname=#{headimgname},
+			</if>
+			<if test="contact!=null and contact!=''">
+				 contact=#{contact},
+			</if>
+		</set>
+		where id=#{id} 
+	</update>
+	<update id="signIn">
+		update user
+		set signdate=CURRENT_TIMESTAMP
+			<if test="coin!=null and coin!=''">
+				,coin=coin+#{coin}
+			</if> 
+			<if test="signin!=null and signin!=''">
+				,signin=signin+#{signin}
+			</if> 
+		
+		where id=#{id} 
+		<if test="coin!=null and coin!=''">
+			and coin+#{coin}&gt;=0
+		</if> 
+		<if test="signin!=null and signin!=''">
+			and signin+#{signin}&gt;=0
+		</if> 
+	</update>
+	<select id="countTecho" resultType="java.lang.Long">
+		select count(*) from techo where uid=#{_paramater}
+	</select>
+	<select id="countFan" resultType="java.lang.Long">
+		select count(*) from fan where uid=#{_paramater}
+	</select>
+	<select id="countFollower" resultType="java.lang.Long">
+		select count(*) from fan where fanid=#{_paramater}
+	</select>
+	<delete id="delete">
+		delete from user where id=#{_parameter}
+	</delete>
+	<update id="updateAllRead">
+		update user set `read`=1
+	</update>
+	<update id="updateRead">
+		update user 
+		
+			set	`read`=#{read}
+		
+		where id=#{id} 
+	</update>
+</mapper>

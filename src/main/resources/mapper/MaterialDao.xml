@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.MaterialDao">	
+	<insert id="insert" keyProperty="id">
+		insert into material(tid,price,content,name,number,imgname)
+		values( #{tid},#{price},#{content},#{name},#{number},#{imgname})
+	</insert>
+ 	<select id="selectById" resultType="Material">
+ 		select id,
+	 price,
+	number,
+	tid,
+	imgname from material where id = #{_parameter}
+ 	</select>
+ 	<select id="getByTidByPage" resultType="Material">
+ 		select * from material where tid = #{tid} and del=0
+ 	</select>
+ 	<update id="update">
+ 		update material 
+ 		<set>
+ 			<if test="price!=null and price!=''">
+ 				price=#{price},
+ 			</if>
+ 			<if test="content!=null and content!=''">
+ 				content=#{content},
+ 			</if>
+ 			<if test="name!=null and name!=''">
+ 				 name=#{name},
+ 			</if>
+ 			<if test="number!=null and number!=''">
+ 				 number=number+#{number},
+ 			</if>
+ 			<if test="imgname!=null and imgname!=''">
+ 				 imgname=#{imgname},
+ 			</if>
+ 		</set>
+ 		where id=#{id} and del=0
+ 	</update>
+ 	<update id="numberAddAndSub">
+ 		update material 
+ 		set number=number+#{number}
+ 		where id=#{id} and number+#{number} &gt;=0
+ 	</update>
+ 	<update id="delete">
+ 		update  material
+ 		set del=1  
+ 		where id=#{_parameter}
+ 	</update>
+	<delete id="deleteAll">
+		delete from material where tid = #{tid}
+		
+	</delete>
+	 	<select id="getByTid" resultType="Material">
+ 		select * from material where tid = #{tid} 
+ 	</select>
+
+</mapper>

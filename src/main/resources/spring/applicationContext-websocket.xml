@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/websocket
+        http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+        
+    <!-- websocket配置 -->
+	<bean id="websocket" class="notice.SpringWebSocketHandler"/>
+	
+   	<websocket:handlers  allowed-origins="*"> <!-- 配置允许所有origins,默认是仅允许同源请求 -->
+   		<!-- 将上面的WebSocket handler映射到特定的URL -->
+       <websocket:mapping path="/websocket" handler="websocket"/>
+       <!-- 配置内置拦截器，该拦截器可以传递HTTP session attributes到WebSocket session -->
+       <websocket:handshake-interceptors>
+           <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+       </websocket:handshake-interceptors>
+   	</websocket:handlers>
+</beans>

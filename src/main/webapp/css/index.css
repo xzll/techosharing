@@ -1,0 +1,142 @@
+.go_register{
+  margin: 0 0 0 20px;
+}
+.ma{
+  position: relative;
+  z-index: -1;
+}
+.lo{
+  width: 100%;
+  height: 700px;
+  background: rgba(66,66,66,0.7);
+  position: fixed;
+  top: 0;
+  z-index: 0;
+}
+.formContainer{
+  left: 40%;
+  top: 17%;
+  height: 450px;
+  width: 355px;
+  padding-left: 50px;
+  border-radius: 10px;
+  background-color: #5eafe1de;
+  position: fixed;
+  z-index: 1;
+}
+.login{
+  top: 25px;
+  font-size: 1.5em;
+  color: rgba(51,51,51,1);
+  cursor: pointer;
+}
+.cut{
+  top: 27px;
+  font-size: 2em;
+  margin: 10px;
+  color: rgba(51,51,51,1);
+}
+.register{
+  top: 25px;
+  font-size: 1.5em;
+  color: rgba(51,51,51,1);
+  cursor: pointer;
+}
+
+.tips {
+  top: 40px;
+  font-size: 1.5em;
+  color: #f00;
+}
+
+form{
+  top: 50px;
+}
+
+[type="text"]{
+    top: 15px;
+    width: 250px;
+    height: 40px;
+    padding-left: 20px;
+    background: rgba(1,1,1,0);
+    border: solid 2px #858b98;
+}
+
+[type="password"]{
+  margin-top: 30px;
+  width: 250px;
+  height: 40px;
+  padding-left: 20px;
+  background: rgba(1,1,1,0);
+  border: solid 2px #858b98;
+}
+
+.row{
+  top: 30px;
+}
+
+[type="checkbox"]{
+  height: 25px;
+  width: 25px;
+  border: 1px solid #000;
+}
+
+.remember{
+  top: -8px;
+  padding-left: 20px;
+  font-size: 1.3em;
+}
+
+.forget{
+  float: right;
+  padding-right: 100px;
+  font-size: 1.3em;
+}
+
+.forget:link,
+.forget:visited{
+  color: rgba(0,51,255,1);
+  text-decoration: none;
+}
+
+[type="submit"]{
+  top: 60px;
+  width: 300px;
+  height: 50px;
+  background-color: rgba(50,177,108,1);
+  color: white;
+  font-size: 2em;
+  border-radius: 10px;
+  border: transparent;
+  font-family: Microsoft Yahei;
+  cursor: pointer;
+}
+
+[type="submit"]:hover{
+  background-color: rgba(0,113,48,1);
+}
+
+[type="submit"]:active{
+  color: rgba(102,102,102,1);
+  background-color: #fff;
+}
+
+[type="code"]{
+  margin-top: 20px;
+  width: 250px;
+  height: 40px;
+  padding-left: 20px;
+  background: rgba(1,1,1,0);
+  border: solid 2px #858b98;
+}
+.getCode{
+  width: 65px;
+  height: 30px;
+  padding: 0 0 0 5px;
+  line-height: 30px;
+  background: #2094dc;
+  border-radius: 10px;
+  top: 15px;
+  display: inline-block;
+  cursor: pointer;
+}

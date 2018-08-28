@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.CollectDao">	
+	<resultMap type="Collect" id="CollectResultMap">
+		<result column="collect_uid" property="uid" />
+		<result column="collect_tid" property="tid" />
+		<result column="collect_createtime" property="createtime" />
+		<result column="collect_read" property="read" />
+		<result column="collect_username" property="username"/>
+		<association property="techo" javaType="Techo" >
+			<id column="techo_id" property="id" />
+			<result column="techo_uid" property="uid"/>
+			<result column="techo_username" property="username"/>
+			<result column="techo_content" property="content"/>
+			<result column="techo_title" property="title"/>
+			<result column="techo_createtime" property="createtime"/>
+			<result column="techo_imgnames" property="imgnames"/>
+		</association>
+	</resultMap>
+	<insert id="insert" >
+		insert into collect(uid,tid)
+		values( #{uid},#{tid})
+	</insert>
+	<select id="countByTid" resultType="java.lang.Long">
+		select count(*) from collect where tid = #{_parameter}
+		
+	</select>
+	<select id="selectByUidByPage" resultMap="CollectResultMap"><!-- 查找用户收藏的 -->
+		<!-- select
+		c.uid collect_uid,
+		c.tid collect_tid,
+		DATE_FORMAT(c.createtime,'%Y-%m-%d %H:%i:%s') collect_createtime,
+		c.read collect_read,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u.username techo_username
+		from collect c,techo t, user u -->
+		select 
+		c.uid collect_uid,
+		c.tid collect_tid,
+		DATE_FORMAT(c.createtime,'%Y-%m-%d %H:%i:%s') collect_createtime,
+		c.read collect_read,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u.username collect_username,
+		u2.username techo_username
+		from collect c,techo t, user u,user u2
+		where c.uid = #{uid} and c.tid = t.id and c.uid = u.id and u2.id = t.uid
+
+		<if test="techo!=null and techo.content!=null and techo.content!=''">
+			and t.content = #{techo.content}
+		</if>
+		order by c.createtime desc
+	</select>
+	<select id="selectBeCollectByPage" resultMap="CollectResultMap"><!-- 查找用户被收藏的 -->
+		select 
+		c.uid collect_uid,
+		c.tid collect_tid,
+		DATE_FORMAT(c.createtime,'%Y-%m-%d %H:%i:%s') collect_createtime,
+		c.read collect_read,
+		t.id techo_id,
+		t.uid techo_uid,
+		DATE_FORMAT(t.createtime,'%Y-%m-%d %H:%i:%s') techo_createtime,
+		t.title techo_title ,
+		t.content techo_content,
+		t.imgnames techo_imgnames,
+		u.username collect_username,
+		u2.username techo_username
+		from collect c,techo t, user u,user u2
+		where t.uid = #{uid} and t.id=c.tid and c.uid = u.id and u2.id = t.uid and del = 0
+		<if test="techo!=null and techo.content!=null and techo.content!=''">
+			and t.content = #{techo.content}
+		</if>
+		order by c.createtime desc
+	</select>
+	<update id="deleteReceive">
+		update collect set del = 1 where uid=#{uid} and tid=#{tid}
+	</update>
+	<delete id="delete">
+		delete from collect where uid=#{uid} and tid=#{tid}
+	</delete>
+	<delete id="deleteAll">
+		delete from collect 
+		<where>
+			<if test="uid!=null and uid!=''">
+				or uid = #{uid}
+			</if>
+			<if test="tid!=null and tid!=''">
+				or tid = #{tid}
+			</if>
+		</where>
+	</delete>
+</mapper>
